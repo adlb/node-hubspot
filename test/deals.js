@@ -141,6 +141,21 @@ describe('Deals', function () {
     })
   })
 
+  describe('updateBatch', function () {
+    it('Returns Recently Created Deals and update them batch', function () {
+      return hubspot.deals.getRecentlyCreated().then(data => {
+        expect(data.results).to.be.an('array')
+        expect(data.hasMore).to.equal(true)
+        const deals = data.results.slice(0, 1)
+        const update = deals.map(deal => {
+          return { objectId: deal.dealId, properties: [ { name: 'dealname', value: 'test' } ] }
+        })
+        return hubspot.deals.updateBatch(update)
+          .then(() => expect(true))
+      })
+    })
+  })
+
   // describe('Associate', function () {
   //   it('Returns a 204 response if successful.', function () {
   //     return hubspot.deals.associate(1126609, 'CONTACT', 394455).then(data => {

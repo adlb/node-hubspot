@@ -252,6 +252,15 @@ hubspot.campaigns.events(opts, cb)
 hubspot.broadcasts.get(opts, cb)
 ```
 
+### CRM Extension
+
+```javascript
+hubspot.extensions.create(data, cb)
+hubspot.extensions.view(id, cb)
+hubspot.extensions.modify(id, data, cb)
+hubspot.extensions.delete(id, cb)
+```
+
 ### OAuth
 
 #### Obtain your authorization url
